@@ -45,7 +45,25 @@ await checkoutButton.scrollIntoViewIfNeeded();
 await checkoutButton.click();
 const checkoutButton2=page.locator("span.glyphicon.glyphicon-shopping-cart");
 await expect(checkoutButton2).toBeEnabled();
+page.pause();
 
+await page.locator("div h4").waitFor();
 
+const isItemVisible=await page.locator("text='"+selectedItem+"'").isVisible();
+console.log("Visibility of element: "+isItemVisible);
+expect(isItemVisible).toBeTruthy();
+page.pause();
+const sucessBtn=page.locator(".btn-success");
+await sucessBtn.click();
+page.pause();
+const purchaseBtn=page.locator(".btn-lg");
+await purchaseBtn.click();
+const alertMessage=page.locator(".alert-dismissible");
+const alertText=await alertMessage.textContent();
+console.log("Texto de alerta: "+ alertText);
+const expectedMessage="Success! Thank you! Your order will be delivered in next few weeks :-).        ";
+expect(alertMessage).toContainText(expectedMessage);
+
+page.pause();
 });
 
