@@ -10,5 +10,7 @@ await page.getByPlaceholder("Password").fill("Contrasena");
 await page.locator('form input[name="name"]').fill("Orlando");
 await page.locator('form input[name="email"]').fill("test_email@domain.com");
 await page.getByRole("button",{name:'Submit'}).click();
+await page.getByRole("link",{name:'Shop'}).click();
+
 });
 
