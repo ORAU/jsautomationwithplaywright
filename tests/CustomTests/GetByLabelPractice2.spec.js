@@ -18,7 +18,7 @@ await page.pause();
 await page.locator("div li").first().waitFor();
 await expect(page.getByText(productName)).toBeVisible();
 await page.getByRole("button", { name: "Checkout" }).click();
-await page.pause();
+//await page.pause();
 //await page.getByPlaceholder("Select Country").fill("El Salvador");
 await page.getByPlaceholder("Select Country").pressSequentially("El Salvador");
 await page.getByRole("button", { name: "El Salvador" }).click();
